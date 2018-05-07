@@ -1,0 +1,263 @@
+<?
+if(empty($_REQUEST['id'])){echo"<script>window.location='order.php';</script>";exit;}
+session_start();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/back.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ระบบหลังร้าน - คำสั่งซื้อ</title>
+<!-- InstanceEndEditable -->
+<link href="css/design.css" rel="stylesheet" type="text/css" />
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+<?
+include('../process/connect.php');
+if(isset($_SESSION['username'])){$username=$_SESSION['username'];}
+else if(!isset($_SESSION['username'])){echo"<script>alert('ยังไม่เข้าสู่ระบบ');window.location='index.php';</script>";exit;}
+//ข้อมูลร้าน
+$sqlSetting="SELECT * FROM setting";
+$resultSetting=mysql_query($sqlSetting)or die(mysql_error());
+$rowSetting=mysql_fetch_array($resultSetting);
+?>
+<body>
+<div id="menu">
+  <div class="welcome">ยินดีต้อนรับคุณ <?=$username?></div>
+  <ul class="menu">
+    <li><a href="<?=$rowSetting['website_name']."/"?>" target="_blank"><img src="image/store-icon.png"/><br/>หน้าร้าน</a></li>
+    <li><a href="user.php"><img src="image/admin-icon.png"/><br/>ผู้ใช้</a></li>
+    <!--<li><a href="../admin/member.php"><img src="../admin/image/user-icon.png"/><br/>สมาชิก</a></li>-->
+    <li><a href="image.php"><img src="image/photos-icon.png"/><br/>รูปภาพ</a></li>
+    <li><a href="category.php"><img src="image/file-cabinet-icon.png"/><br/>หมวดหมู่</a></li>
+    <li><a href="product.php"><img src="image/packaging-icon.png"/><br/>สินค้า</a></li>
+    <li><a href="order.php"><img src="image/shopping-icon.png"/><br/>คำสั่งซื้อ</a></li>
+    <li><a href="payment.php"><img src="image/money-icon.png"/><br/>ชำระเงิน</a></li>
+    <li><a href="bank.php"><img src="image/visa-icon.png"/><br/>การเงิน</a></li>
+    <li><a href="shipping.php"><img src="image/shipping-icon.png"/><br/>จัดส่ง</a></li>
+    <!--<li><a href="../admin/message.php"><img src="../admin/image/email-icon.png"/><br/>ข้อความ</a></li>--> 
+    <li><a href="webboard.php"><img src="image/chat-icon.png"/><br/>เว็บบอร์ด</a></li>
+    <!--<li><a href="../admin/article.php"><img src="../admin/image/news-icon.png"/><br/>บทความ</a></li>-->
+    <li><a href="tag.php"><img src="image/tag-icon.png"/><br/>แท็ก</a></li>
+    <li><a href="decoration.php"><img src="image/apple-appstore-icon.png"/><br/>ตกแต่ง</a></li>
+    <li><a href="setting.php"><img src="image/contact-info-icon.png"/><br/>ข้อมูลร้าน</a></li>  
+    <li><a href="plus.php"><img src="image/shopping-bag-icon.png"/><br/>ส่วนเสริม</a></li> 
+    
+    <li><a href="process/logout.php"><img src="image/security-icon.png"/><br/>ออก</a></li>
+  </ul>
+  <div style="clear:both;"></div>
+</div>
+<!-- InstanceBeginEditable name="EditRegion" -->
+<?
+$id=base64_decode($_REQUEST['id']);
+$sql="SELECT * FROM `order` WHERE id=$id";
+$result=mysql_query($sql)or die(mysql_error());
+$row=mysql_fetch_array($result);
+$num=mysql_num_rows($result);
+if($num==0){echo"<script>window.location='order.php';</script>";exit;}
+?>
+<div style="width:962px; margin:20px auto 0 auto;text-align:right;">
+  <input type="button" value="กลับ" onclick="window.location='order.php'"/>
+</div>
+<table style="margin-top:10px;" class="data" align="center" cellpadding="10" cellspacing="0" >
+  <tr>
+    <th class="header">ข้อมูลการจัดส่ง รหัสคำสั่งซื้อ <?=$row['id']?></th>
+  </tr>
+  <tr>
+    <td colspan="2">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="order">
+  <tr>
+    <td width="100">ชื่อ - สกุล</td>
+    <td>
+	  <?=$row['fullname']?> 	  
+	  <? if($row['member_id']!=0){?>
+        <a href='memberEdit.php?id=<?=base64_encode($row['member_id'])?>' class="member" target="_blank">สมาชิก</a>
+	  <? }?></td>
+  </tr>
+  <tr>
+    <td>ที่อยู่</td>
+    <td><?=$row['address']?></td>
+  </tr>
+  <tr>
+    <td>อีเมล</td>
+    <td><?=$row['email']?></td>
+  </tr>
+  <tr>
+    <td>เบอร์ติดต่อ</td>
+    <td><?=$row['tel']?></td>
+  </tr>
+  <tr>
+    <td>จำนวนเงิน</td>
+    <td><?=number_format($row['total']+$row['shipping_price'],2)?> บาท</td>
+  </tr>
+  <tr>
+    <td>วันที่สั่งซื้อ</td>
+    <td><?=substr($row['insert_date'],0,16)?></td>
+  </tr>
+  <tr>
+    <td>หมายเหตุ</td>
+    <td><? if($row['note']==""){$row['note']="-";}?><?=$row['note']?></td>
+  </tr>
+</table> 
+    </td>
+  </tr>
+</table>
+<?
+$sqlCart="SELECT * FROM order_detail WHERE order_id=$id";
+$resultCart=mysql_query($sqlCart)or die(mysql_error());
+$sum=0;
+$i=0;
+?>
+<table class="list" width="960" border="0" align="center" cellpadding="10" cellspacing="0">
+  <tr>
+    <th width="50" class="header">ที่</th>
+    <th width="62" class="header">รูป</th>
+    <th class="header">รายการสินค้า</th>
+    <th width="100" class="header">ราคา</th>
+    <th width="100" class="header">จำนวน (ชิ้น)</th>
+    <th width="100" class="header">ราคารวม</th>
+  </tr>
+<?
+
+while($rowCart=mysql_fetch_array($resultCart)){ 
+$mul=$rowCart['product_price']*$rowCart['amount'];
+$sum+=$mul;
+$i++;
+?>
+  <tr>
+    <td align="center" valign="middle" class="td_border"><?=$i?></td>
+    <td align="center" valign="middle" class="td_border">
+      <div class="product"><img src="../product/<?=$rowCart['product_image']?>"/></div>
+    </td>
+    <td align="center" valign="middle" class="td_border"><?=$rowCart['product_name']?><br/><?=$rowCart['option_name']?></td>
+    <td align="center" valign="middle" class="td_border"><?=number_format($rowCart['product_price'],2)?></td>
+    <td align="center" valign="middle" class="td_border"><?=number_format($rowCart['amount'])?></td>
+    <td align="right" valign="middle" class="td_border"><?=number_format($mul,2)?></td>
+  </tr> 
+  <?
+  }
+  ?>
+  <tr>
+    <td style="text-align:right;"  colspan="5" align="right"><?=$row['shipping_option']?></td>
+    <td  align="right"><?=number_format($row['shipping_price'],2)?></td>
+    </tr>
+  <tr>
+    <td style="border:none;"  colspan="5" align="right">ราคารวมทั้งหมด (บาท)</td>
+    <td align="right" style="border:none;" ><?=number_format($sum+$row['shipping_price'],2)?></td>
+  </tr>
+</table>
+
+
+<table class="data" align="center" cellpadding="10" cellspacing="0" >
+  <tr>
+    <th class="header">
+      แก้ไขสถานะคำสั่งซื้อ
+<div style="float:right;"> 
+  <a href="process/order/orderDelete.php?id=<?=base64_encode($row['id'])?>" onclick="return confirm('ลบรหัสคำสั่งซื้อ <?=$row['id']?> ?')"><img src="image/icon-bin.png"class="action" title="ลบ"/></a>
+</div>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="2">
+<form action="process/order/orderUpdate.php" method="post" name="order">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td width="100">สถานะ</td>
+    <td>
+      <select name="status">
+      <?
+      $statusList=array('ยังไม่ชำระเงิน','ชำระเงินแล้ว','จัดส่งแล้ว','ยกเลิก');
+	  foreach($statusList as $status){
+	    if($status==$row['status']){
+	      echo"<option value='$status' selected='selected'>$status</option>";
+		}
+		else{
+		  echo"<option value='$status'>$status</option>";
+		}
+	  }
+	  ?>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>หมายเลขพัสดุ</td>
+    <td><input name="ems" type="text" style="width:95px;" value="<?=$row['ems']?>" size="13" maxlength="13"/></td>
+  </tr>
+  <tr>
+    <td><input name="id" type="hidden" value="<?=base64_encode($id)?>"/></td>
+    <td>
+      <input type="submit" value="บันทึก"/>
+      <input type="button" value="ส่งอีเมล์" onclick="window.location='process/message/sendShipping.php?id=<?=$_REQUEST['id']?>';"/>
+    </td>
+  </tr>
+</table>
+</form>  
+    </td>
+  </tr>
+</table>
+<?
+$sqlPayment="SELECT * FROM payment WHERE order_id=$id ORDER BY id DESC";
+$resultPayment=mysql_query($sqlPayment)or die(mysql_error());
+$numPayment=mysql_num_rows($resultPayment);
+?>
+<table class="list" align="center" cellpadding="10" cellspacing="0" >
+  <tr>
+    <th width="50" class="header">รหัส<br/></th>
+    <th class="header">ชื่อ - นามสกุล</th>
+    <th width="100" class="header">จำนวนเงิน</th>
+    <th width="120" class="header">ธนาคาร</th>
+    <th width="120" class="header">วันที่โอน</th>
+    <th width="120" class="header">สถานะ</th>
+    <th width="150" class="header">จัดการ</th>
+  </tr>
+<?
+if($numPayment>0){
+  for($i=1;$i<=$numPayment;$i++){$rowPayment=mysql_fetch_array($resultPayment);
+?>
+  <tr>
+    <td align="center"><?=$rowPayment['order_id']?></td>
+    <td align="center"><?=$rowPayment['fullname']?></td>
+    <td align="center"><?=number_format($rowPayment['money'],2)?></td>
+    <td align="center"><?=$rowPayment['bank']?></td>
+    <td align="center"><?=substr($rowPayment['payment_date'],0,16)?></td>
+    <td align="center"><?=$rowPayment['status']?></td>
+    <td align="center" style="background:#f9f9f9">
+      <a href="paymentEdit.php?id=<?=base64_encode($rowPayment['id'])?>" target="_blank"><img src="image/icon-view-list.png" class="action" title="ดูรายละเอียด"/></a>
+      <a href="process/payment/paymentUpdate.php?id=<?=base64_encode($rowPayment['id'])?>&status=อนุมัติ"><img src="image/icon-tick.png" class="action" title="อนุมัติ"/></a>
+      <a href="process/payment/paymentUpdate.php?id=<?=base64_encode($rowPayment['id'])?>&status=ปฏิเสธ"><img src="image/icon-cancle.png" class="action" title="ปฏิเสธ"/></a>
+      <a href="process/payment/PaymentDelete.php?id=<?=base64_encode($rowPayment['id'])?>" onclick="return confirm('ลบรายการแจ้งชำระเงินของคุณ <?=$rowPayment['fullname']?> ?')"><img src="image/icon-bin.png"class="action" title="ลบ"/></a>    
+    </td>
+  </tr>
+<?
+  }
+}
+else if($numPayment==0){
+?>
+  <tr>
+    <td colspan="7" align="center">ไม่มีข้อมูล</td>
+  </tr>
+<?
+}
+?>
+  <tr>
+    <th class="footer" colspan="7">จำนวน : <?=$numPayment?></th>
+  </tr>
+</table>
+<div style="width:962px; margin:10px auto 0 auto; text-align:left;">
+  <input type="button" value="กลับ" onclick="window.location='order.php'"/>
+</div>
+<!-- InstanceEndEditable -->
+<?
+function rewrite_url($url="url"){
+  $url=strtolower(str_replace(" ","_",$url));
+  $url=preg_replace('~[^a-z0-9ก-๙\.\-\_]~iu','',$url);
+  return $url;
+}
+mysql_close($conn);
+?>
+</body>
+<!-- InstanceEnd --></html>
+<script type="text/javascript">
+document.order.ems.focus();
+</script>

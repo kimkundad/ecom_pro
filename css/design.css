@@ -1,0 +1,194 @@
+@charset "utf-8";
+body{margin:0;padding:45px 0 20px 0;color:#333;}
+/******************************* Link Color *******************************/
+a{color:#333;text-decoration:none;}/*สีลิงค์*/
+a:hover{color:#0753a6;}/*สีลิงค์เมื่อ onmouseover*/
+/******************************* Navigation (เมนู) *******************************/
+#nav{padding:0;margin:0;background:#fff;width:100%;position:fixed;top:0;z-index:9999;
+-webkit-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+box-shadow:1px 1px 3px rgba(205,205,205,0.8);}/*ความกว้าง เงา และพื้นหลังของเมนู*/
+#nav div{width:1050px;margin:auto;position:relative;}/*ความกว้างของเมนู (div ด้านใน)*/
+#nav div a{display:inline;padding:12px 5px 10px 6px;float:right;font:normal 16px 'supermarketRegular';letter-spacing:1px;}/*ลิงค์้เมนู*/
+#nav div a:hover{background:#fcfcfc;}/*ลิงค์เมนูเเมื่อ onmouseover*/
+#nav div a.logo{float:left;background:none;}/*ลิงค์ของโลโก้*/
+#nav div a.logo img{border:none;max-height:25px;}/*ภาพโลโก้ (ความยาวสูงสุดหำหนดอยู่ที่ 25 pixel*/
+/******************************* Slideshow (Step Carousel Viewer v1.9) *******************************/
+#slideshow{padding:15px;margin:30px auto 0 auto;background:#fff;
+-webkit-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+box-shadow:1px 1px 3px rgba(205,205,205,0.8);}/*กรอบของสไลด์โชว์*/
+.stepcarousel{position:relative;overflow:scroll;width:930px;height:400px;}/*ขนาดของสไลด์โชว์*/
+.stepcarousel .belt{position:absolute;left:0;top:0;}
+.stepcarousel .panel{float:left;overflow:hidden;width:930px;}/*ความกว้างของสไลด์โชว์ ควรให้เท่ากับด้านบน*/
+.stepcarousel .panel a img{border:none;}/*รูปสไลด์*/
+/******************************* HTML Area *******************************/
+.html1{margin:30px auto 0px auto;width:940px;padding:10px;background:#fff;font:normal 14px 'supermarketRegular';
+-webkit-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+box-shadow:1px 1px 3px rgba(205,205,205,0.8);}/*พื้นที่ที่ให้เพิ่มเนื้อหาเองในระบบหลังร้าน อยู่ด้านบนสุดในหน้าแรก*/
+.html2{margin-top:20px;width:711px;padding:10px;background:#fff;font:normal 14px 'supermarketRegular';
+-webkit-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+box-shadow:1px 1px 3px rgba(205,205,205,0.8);}/*พื้นที่ที่ให้เพิ่มเนื้อหาเองในระบบหลังร้าน อยู่ด้านล่าง*/
+/******************************* Content *******************************/
+#content{width:960px;margin:10px auto 0 auto;}/*ความกว้างของเนื้อหาทั้งหมด*/
+#aside{width:200px;float:left;}/*ความกว้างของเนื้อหาด้านซ้านมือ*/
+#section{width:731px;float:right;}/*ความกว้างของเนื้อหาด้านขวามือ*/
+#page{width:731px;float:right;margin:10px 0 0 0;font:normal 14px 'supermarketRegular';text-align:center;}/*ส่วนที่แสดงหมายเลขหน้า*/
+/******************************* Horizontal Line *******************************/
+hr{border:none;border-top:1px dotted #dadada;height:1px;display:block;margin:10px 0 10px 0;padding:0;}/*เส้นคั่นแนวนอน*/
+/******************************* Box *******************************/
+table.box{margin-top:20px;
+-webkit-box-shadow:0 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:0 1px 3px rgba(205,205,205,0.8);
+box-shadow:0 1px 3px rgba(205,205,205,0.8);}/*กล่องเนื้อหาต่าง ๆ*/
+table.box th{color:#fff;font:normal 16px 'supermarketRegular';letter-spacing:2px;text-shadow:1px 1px 1px #000;
+background:-webkit-gradient(linear,left top,left bottom,from(#252525),to(#0f0f0f));
+background:-moz-linear-gradient(top,#252525,#0f0f0f);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#252525',endColorstr='#0f0f0f');}/*หัวข้อของกล่องเนื้อหา*/
+table.box td{background:#fff;font:normal 14px 'supermarketRegular';}
+table.box td a.top-seller{display:block;position:relative;}/*สีลิงค์ของชื่อสินค้าที่ขายดี*/
+table.box td a.top-seller:hover{color:#333;}/*สีลิงค์ของชื่อสินค้าที่ขายดีเมื่อ onmouseover*/
+table.box td a.top-seller img{margin-bottom:5px;max-width:179px;border:none;}/*ภาพสินค้าขายดี*/
+/******************************* Page *******************************/
+.number-selected{font:normal 14px 'supermarketRegular';padding:0 3px 0 3px;
+-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;border:solid 1px #dfdfdf;
+-webkit-box-shadow:0 0 3px rgba(205,205,205,0.8)inset;
+-moz-box-shadow:0 0 3px rgba(205,205,205,0.8)inset;
+box-shadow:0 0 3px rgba(205,205,205,0.8)inset;}/*หมายเลขหน้าที่แสดงอยู่*/
+.number{font:normal 14px 'supermarketRegular';padding:0 4px 0 4px;}/*หมายเลขหน้า*/
+.number:hover{color:#333;padding:0 3px 0 3px;-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;border:solid 1px #dfdfdf;
+-webkit-box-shadow:0 0 3px rgba(205,205,205,0.8)inset;
+-moz-box-shadow:0 0 3px rgba(205,205,205,0.8)inset;
+box-shadow:0 0 3px rgba(205,205,205,0.8)inset;}/*หมายเลขหน้าเมื่อ onmouseover*/
+/******************************* ตารางตะกร้าสินค้า เว็บบอร์ด รายการคำสั่งซื้อของลูกค้า *******************************/
+table.box td table.list{width:100%;background:#efefef;}
+table.box td table.list th{background:#fafafa;color:#333;text-shadow:none;font:normal 14px 'supermarketRegular'}
+table.box td table.list td{padding:5px;background:#fff;}
+h2{margin:0px;padding:0px;font:normal 16px 'supermarketRegular';display:block;}/*หัวข้อในหน้าตอบคำถาม*/
+/******************************* ตารางสินค้า *******************************/
+table.product td{width:25ppx;}
+table.product td a{background:#fff;padding:10px;margin:20px 0 0 20px;text-align:center;display:block;position:relative;
+-webkit-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+-moz-box-shadow:1px 1px 3px rgba(205,205,205,0.8);
+box-shadow:1px 1px 3px rgba(205,205,205,0.8);}
+table.product td a:hover{background:#fafafa;color:#333;}
+table.product td a strong, table.box td a strong, .sagscroller ul li a strong{margin:0px;padding:0px;font:normal 16px 'supermarketRegular';display:block;}/*ชื่อสินค้า*/
+table.product td a img.product{height:210px;max-width:210px;border:none;margin-bottom:10px;}
+.ribbon{position:absolute;top:20px;right:-13px;border:none;}/*รูปริบบิ้นบนหน้าแรก หน้าค้นหา และหน้าแยกหมวดหมู่ (รูปจะอยู่ขวามือ)*/
+.sale{position:absolute;top:27px;right:-1px;font:normal 16px 'supermarketRegular';color:#fff;text-shadow:1px 1px 0 #ae0e0e;}/*เปอร์เซนต์ที่ลดบนหน้าแรก หน้าค้นหา และหน้าแยกหมวดหมู่*/
+.ribbon-top-seller{position:absolute;top:10px;left:-22px;border:none;}/*รูปริบบิ้นบนกล่องเนื้อหาสินค้าขายดี(รูปจะอยู่ซ้ายมือ)*/
+.sale-top-seller{position:absolute;top:17px;left:-10px;font:normal 16px 'supermarketRegular';color:#fff;text-shadow:1px 1px 0 #ae0e0e;}/*เปอร์เซนต์ที่ลดบนกล่องเนื้อหาสินค้าขายดี*/
+#ribbon-product{position:absolute;top:-2px;right:-22px;border:none;}/*รูปริบบิ้นบนหน้ารายละเอียดสินค้า*/
+#sale-product{position:absolute;top:6px;right:-10px;font:normal 16px 'supermarketRegular';color:#fff;text-shadow:1px 1px 0 #ae0e0e;}/*เปอร์เซนต์ที่ลดบนหน้าแสดงรายละเอียดสินค้า*/
+.price{margin:0;padding:0;font:normal 22px 'supermarketRegular';color:#ff3b40;text-shadow:1px 1px 1px #eee;display:inline;}/*ราคาขาย*/ 
+.discount{margin:0;padding:0;font:normal 14px 'supermarketRegular';color:#0753a6;text-decoration:line-through;display:inline;}/*ราคาปกติก่อนลด*/
+.out-of-stock{margin:0;padding:0;font:normal 22px 'supermarketRegular';color:#ff3b40;text-shadow:1px 1px 1px #eee;display:inline;}
+/******************************* Footer *******************************/
+.footer{width:960px;margin:30px auto 0 auto;font:normal 14px 'supermarketRegular';}
+.footer div h1{font:normal 14px 'supermarketRegular';display:inline;}/*Title ของร้าน*/
+.footer a img{max-height:12px;float:right;border:none;}
+.stats{margin:20px auto 0 auto;text-align:center;}/*ตัวเก็บสถิติ*/
+/******************************* Button & Textfield *******************************/
+input[type='text'], input[type='password']{font:normal 14px 'supermarketRegular';padding:2px 7px 2px 7px;outline:0px;border:solid 1px #dfdfdf;
+-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;
+box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;}/*ฟอร์มชนิด textfield*/
+input[type='text']:focus ,input[type='password']:focus{border:solid 1px #dfdfdf;
+box-shadow:0 0 3px rgba(235,235,235,0.9);
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9);
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9);}/*ฟอร์มชนิด textfield เมื่อ focus*/
+textarea{font:normal 14px 'supermarketRegular';padding:2px 7px 2px 7px;outline:0px;border:solid 1px #dfdfdf;
+-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;
+box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;}/*ฟอร์มชนิด textfarea*/
+textarea:focus{border:solid 1px #dfdfdf;
+box-shadow:0 0 3px rgba(235,235,235,0.9);
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9);
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9);}/*ฟอร์มชนิด textfarea เมื่อ focus*/
+select{font:normal 14px 'supermarketRegular';padding:2px 2px 2px 7px;outline:0px;border:solid 1px #dfdfdf;
+-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;
+box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9)inset;}/*ฟอร์มชนิด select*/
+select:focus{border:solid 1px #dfdfdf;
+box-shadow:0 0 3px rgba(235,235,235,0.9);
+-moz-box-shadow:0 0 3px rgba(235,235,235,0.9);
+-webkit-box-shadow:0 0 3px rgba(235,235,235,0.9);}/*ฟอร์มชนิด select เมื่อ focus*/
+input[type='submit'], input[type='button'], .button{padding:2px 7px 2px 7px;text-decoration:none;font:normal 14px 'supermarketRegular'; letter-spacing:1px;border:solid 1px #dfdfdf;color:#333;display:inline;
+-moz-border-radius:2px;-webkit-order-radius:2px;border-radius:2px;
+background:-webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#ececec));
+background:-moz-linear-gradient(top,#f9f9f9, #ececec);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9',endColorstr='#ececec');}/*ปุ่ม*/
+input[type='submit']:hover, input[type='button']:hover, .button:hover{border:solid 1px #ccc;cursor:pointer;text-decoration:none;color:#333;}/*ปุ่มเมื่อ onmouseover*/
+input[type='submit']:active, input[type='button']:active, .button:active{border:solid 1px #ccc;cursor:pointer;
+background:-webkit-gradient(linear,left top,left bottom,from(#ececec),to(#f9f9f9));
+background:-moz-linear-gradient(top,#ececec, #f9f9f9);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ececec',endColorstr='#f9f9f9');}/*สีปุ่มเมื่อคลิก*/
+/******************************* Simple Image Panner and Zoomer v1.1 *******************************/
+.pancontainer{position:relative;overflow:hidden;
+width:502px;height:502px;/* ขนาดกล่องแสดงภาพสินค้า (เลื่อนภาพได้)*/}
+.pancontainer img{left:0;top:0;position:absolute;}
+#move{background:#fafafa;padding:5px;color:#999;bottom:5px;left:5px;position:absolute;z-index:9;font:normal 12px 'supermarketRegular';display:block;-moz-border-radius:3px;-webkit-order-radius:3px;border-radius:3px;opacity:.9;
+filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+-MS-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";}/*ข้อความ เลื่อนเพื่อดูรายละเอียดเพิ่มเติมในหน้าแสดงรายละเอียดสินค้า*/
+/******************************* Content Slider *******************************/
+.glidecontentwrapper{position:relative;width:502px;height:502px;overflow:hidden;}/*ขนาดของกล่องสินค้าที่เลื่อนได้ (ควรเท่ากับ pancontainer)*/
+.glidecontent{position:absolute;visibility:hidden;width:502px;background:#fff;}/*ขนาดของกล่องสินค้าที่เลื่อนได้ (ควรเท่ากับด้านบน)*/
+.glidecontenttoggler{width:179px;text-align:left;}/*ขนาดของเนื้อหาในภาพประกอบสินค้า*/
+.glidecontenttoggler a img{display:-moz-inline-box;display:inline-block;
+height:35px;width:35px;padding:5px;margin:2px 5px 2px 5px;border:solid 1px #f2f2f2;}/*ขนาดและสีขอบของภาพประกอบสินค้า*/
+.glidecontenttoggler a img:hover{border:solid 2px #e82735;padding:4px;}/*สีขอบของภาพประกอบสินค้าเมื่อนำเมาส์ไปวาง*/
+/******************************* SAG Scroller *******************************/
+.sagscroller{overflow:hidden;position:relative;text-align:center;z-index:99;
+width:179px;height:630px;}/*ขนาดของกล่องเนื้อหาสินค้าแนะนำบนหน้าบทความและสินค้าที่เกี่ยวข้อง (ด้านขวามือสุด)*/
+.sagscroller a{font:normal 16px 'supermarketRegular';}/*สีลิงค์ของชื่อสินค้า*/
+.sagscroller a:hover{color:#333;}/*สีลิงค์ของชื่อสินค้าเมื่อ onmousrover*/
+.sagscroller a img{max-width:179px;border:none;margin-bottom:5px;}/*ขนาดภาพ*/
+.sagscroller ul{position:absolute;margin:0;padding:0;background:#fff;list-style:none;width:100%;}
+.sagscroller ul li{display:block;}
+/******************************* Tag *******************************/
+.tag{margin:0 5px 5px 0;padding:0 5px 0 5px;display:inline;background:#efefef;font-size:12px;
+-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;}/*แท็ก*/
+.tag:hover{color:#fff;
+background:-webkit-gradient(linear,left top,left bottom,from(#444),to(#0f0f0f));
+background:-moz-linear-gradient(top,#444,#0f0f0f);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#444',endColorstr='#0f0f0f');}/*แท็กเมื่อ onmouseover*/
+/******************************* Font *******************************/
+@font-face {font-family:'supermarketRegular';
+src:url('../f0nt/supermarket-webfont.eot');
+src:url('../f0nt/supermarket-webfont.eot?#iefix')format('embedded-opentype'),
+url('../f0nt/supermarket-webfont.woff')format('woff'),
+url('../f0nt/supermarket-webfont.ttf')format('truetype');
+font-weight:normal;font-style:normal;}
+/******************************* Edit *******************************/
+#edit{padding:5px 25px 5px 5px;background:#fff;opacity:0.8;position:fixed;top:75px;right:0;
+-webkit-border-top-left-radius:7px;
+-webkit-border-bottom-left-radius:7px;
+-moz-border-radius-topleft:7px;
+-moz-border-radius-bottomleft:7px;
+border-top-left-radius:7px;
+border-bottom-left-radius:7px;}
+#edit:hover{background:#fafafa;opacity:1;}
+#edit img{border:none;width:32px;}
+/*
+.sagscroller{
+width:179px; 
+height:630px;
+overflow:hidden;
+position:relative;
+text-align:center;
+border:none;}
+.sagscroller a{font:normal 16px 'supermarketRegular';}
+.sagscroller a:hover{color:#333;}
+.sagscroller a img{max-width:179px;border:none;margin-bottom:5px;}
+.sagscroller ul{position:absolute;margin:0;padding:0;background:#fff;list-style:none;width:100%;}
+.sagscroller ul li{display:block;}
+.sagscroller ul li .rsscontent{ 
+font-size:90%;}
+.sagscroller ul li .rsslabel{
+margin-top:5px;background: #eee;font-size:12px;clear: both;}
+*/
